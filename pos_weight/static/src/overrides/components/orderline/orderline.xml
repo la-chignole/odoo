@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <!--
+        Ajoute un badge de poids cliquable sur chaque ligne du ticket : vert
+        quand le poids est renseigne, orange sinon. Cliquer dessus ouvre
+        directement le clavier numerique pour le saisir/corriger.
+        Masque en dehors du mode "display" (ticket de caisse, impression
+        cuisine, etc.) : le poids est une info de suivi interne, pas une
+        info client.
+    -->
+    <t t-name="pos_weight.Orderline" t-inherit="point_of_sale.Orderline" t-inherit-mode="extension">
+        <xpath expr="//li[hasclass('customer-note')]" position="after">
+            <li t-if="vals.isDisplay and line.hasWeight and !line.hideWeight"
+                t-on-click.stop="() => this.materiautheque_openWeightPopup()"
+                class="materiautheque-weight w-100 p-2 my-1 rounded text-break text-bg-success text-success bg-opacity-25 cursor-pointer">
+                <i class="fa fa-balance-scale me-1" role="img" aria-label="Poids" title="Poids"/>
+                Poids : <t t-esc="line.weightStr"/> kg
+            </li>
+            <li t-if="vals.isDisplay and !line.hasWeight and !line.hideWeight"
+                t-on-click.stop="() => this.materiautheque_openWeightPopup()"
+                class="materiautheque-weight w-100 p-2 my-1 rounded text-break text-bg-warning text-warning bg-opacity-25 cursor-pointer">
+                <i class="fa fa-balance-scale me-1" role="img" aria-label="Poids manquant" title="Poids manquant"/>
+                Poids non renseigne
+            </li>
+        </xpath>
+    </t>
+
+</templates>

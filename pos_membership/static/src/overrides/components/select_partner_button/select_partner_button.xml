@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <!--
+        Colore le nom du client (bouton "Client" de l'ecran de vente
+        principal) en vert s'il est a jour de son adhesion, en rouge sinon.
+
+        Style inline plutot que classe Bootstrap : le bouton a deja ses
+        propres regles de couleur/police dans le PoS, qui peuvent gagner
+        sur une classe utilitaire de meme specificite selon l'ordre de
+        chargement des feuilles de style. Le style inline gagne toujours.
+    -->
+    <t t-name="pos_membership.SelectPartnerButton" t-inherit="point_of_sale.SelectPartnerButton" t-inherit-mode="extension">
+        <xpath expr="//button[hasclass('set-partner')]" position="attributes">
+            <attribute name="class" remove="btn-secondary" separator=" "/>
+            <attribute name="t-att-class">props.partner?.membership_is_valid ? 'btn-success' : 'btn-danger'</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('text-action')]" position="attributes">
+            <attribute name="class" remove="text-action" separator=" "/>
+            <attribute name="class">text-white</attribute>
+        </xpath>
+    </t>
+
+</templates>

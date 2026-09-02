@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--
+        Ecran dedie pour consulter/corriger le poids des lignes de vente.
+        Volontairement separe du formulaire de commande PoS : celui-ci
+        verrouille l'edition des lignes des qu'une commande n'est plus a
+        l'etat "draft" (cf. point_of_sale.view_pos_pos_form), ce qui rend
+        toute correction impossible une fois la commande cloturee.
+    -->
+    <record id="view_pos_order_line_weight_tree" model="ir.ui.view">
+        <field name="name">pos.order.line.weight.list</field>
+        <field name="model">pos.order.line</field>
+        <field name="arch" type="xml">
+            <list string="Poids des ventes" editable="bottom" default_order="create_date desc">
+                <field name="order_id" readonly="1"/>
+                <field name="create_date" string="Date" readonly="1"/>
+                <field name="product_id" readonly="1"/>
+                <field name="product_uom_id" string="UdM" readonly="1"/>
+                <field name="qty" string="Qte" readonly="1" sum="Total qte"/>
+                <field name="weight" string="Poids (kg)" sum="Total poids (kg)"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_pos_order_line_weight" model="ir.actions.act_window">
+        <field name="name">Poids des ventes</field>
+        <field name="res_model">pos.order.line</field>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="view_pos_order_line_weight_tree"/>
+    </record>
+
+    <menuitem id="menu_pos_order_line_weight"
+        name="Poids des ventes"
+        parent="point_of_sale.menu_point_of_sale"
+        action="action_pos_order_line_weight"
+        groups="point_of_sale.group_pos_manager"
+        sequence="20"/>
+
+</odoo>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <!--
+        Ajoute, sous le nom du client dans la liste des clients, un badge
+        colore (vert/rouge) avec le statut d'adhesion, sa date de fin et
+        sa/ses categorie(s). Toujours affiche, meme sans aucune adhesion
+        (statut "Non adherent" en rouge) : c'est le point demande. Insere
+        separement dans la version mobile (div.partner-info) et la version
+        desktop (tr.partner-info), qui partagent la classe "partner-info"
+        mais pas le meme tag.
+
+        Couleur appliquee en style inline (pas en classe Bootstrap) pour
+        eviter tout conflit de specificite CSS avec les styles propres au
+        PoS sur cet element.
+    -->
+    <t t-name="pos_membership.PartnerLine" t-inherit="point_of_sale.PartnerLine" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('partner-info')]//div[hasclass('company-field')]" position="after">
+            <div class="materiautheque-membership small mt-1"
+                 t-attf-class="{{ props.partner.membership_is_valid ? 'text-success' : 'text-danger' }}">
+                <div class="d-flex align-items-center">
+                    <i class="fa fa-id-card me-1"/>
+                    <p class="m-0" t-esc="this.materiautheque_membershipStateLabel(props.partner)"/>
+                </div>
+                <p class="m-0" t-if="props.partner.membership_stop">Date de fin : <t t-esc="this.materiautheque_membershipStopLabel(props.partner)"/></p>
+                <!--                <t t-if="props.partner.membership_category_ids and props.partner.membership_category_ids.length"> (<t t-esc="this.materiautheque_membershipCategoryLabel(props.partner)"/>)</t>-->
+            </div>
+        </xpath>
+        <xpath expr="//tr[hasclass('partner-info')]//div[hasclass('company-field')]" position="after">
+            <div class="materiautheque-membership small mt-1"
+                t-attf-class="{{ props.partner.membership_is_valid ? 'text-success' : 'text-danger' }}">
+                <div class="d-flex align-items-center">
+                    <i class="fa fa-id-card me-1"/>
+                    <p class="m-0" t-esc="this.materiautheque_membershipStateLabel(props.partner)"/>
+                </div>
+                <p class="m-0" t-if="props.partner.membership_stop">Date de fin : <t t-esc="this.materiautheque_membershipStopLabel(props.partner)"/></p>
+<!--                <t t-if="props.partner.membership_category_ids and props.partner.membership_category_ids.length"> (<t t-esc="this.materiautheque_membershipCategoryLabel(props.partner)"/>)</t>-->
+            </div>
+        </xpath>
+    </t>
+
+</templates>

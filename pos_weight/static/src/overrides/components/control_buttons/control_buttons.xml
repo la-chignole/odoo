@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <!--
+        Bouton "Poids" toujours visible (meme regle de visibilite que le
+        bouton Note interne juste avant : rangee du haut sur desktop,
+        aussi accessible depuis le "..." sur petit ecran). Masque quand la
+        ligne selectionnee est vendue au kg (la quantite fait deja foi) ou
+        appartient a une categorie dispensee de poids (services, etc.).
+    -->
+    <t t-name="pos_weight.ControlButtons" t-inherit="point_of_sale.ControlButtons" t-inherit-mode="extension">
+        <xpath expr="//InternalNoteButton" position="after">
+            <button t-if="this.currentOrder?.getSelectedOrderline() and !this.currentOrder.getSelectedOrderline().isKgUnit() and !this.currentOrder.getSelectedOrderline().hideWeight"
+                class="materiautheque-weight-button flex-shrink-0"
+                t-att-class="buttonClass"
+                t-on-click="() => this.materiautheque_clickWeight()">
+                <i class="fa fa-balance-scale me-1"/>Poids
+            </button>
+        </xpath>
+    </t>
+
+</templates>
