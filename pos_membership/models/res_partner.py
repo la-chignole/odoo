@@ -9,7 +9,7 @@ class ResPartner(models.Model):
         string="Adhesion valide",
         compute="_compute_membership_is_valid",
         store=True,
-        help="Vrai si le statut d'adhesion du partenaire est considere comme"
+        help="Vrai si le statut d'adhésion du partenaire est considéré comme"
         " membre (cf. res.partner._membership_member_states()) : sert au"
         " code couleur rouge/vert dans le PoS.",
     )

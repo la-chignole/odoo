@@ -8,9 +8,9 @@ class PosOrderLine(models.Model):
     weight = fields.Float(
         string="Poids (kg)",
         digits=(12, 3),
-        help="Poids reel de la ligne, utilise pour les rapports de matieres."
-        " Pour les produits vendus au kg, il est deduit automatiquement de"
-        " la quantite si non renseigne manuellement.",
+        help="Poids réel de la ligne, utilisé pour la génération de rapports."
+        " Pour les produits vendus au kg, il est déduit automatiquement de"
+        " la quantité si non renseigné manuellement.",
     )
 
     @api.model

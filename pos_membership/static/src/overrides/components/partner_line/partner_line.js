@@ -9,13 +9,13 @@ import {
 } from "@pos_membership/overrides/utils/membership_label";
 
 patch(PartnerLine.prototype, {
-    materiautheque_membershipStateLabel(partner) {
+    pos_membershipStateLabel(partner) {
         return getMembershipStateLabel(partner);
     },
-    materiautheque_membershipStopLabel(partner) {
+    pos_membershipStopLabel(partner) {
         return getMembershipStopLabel(partner);
     },
-    materiautheque_membershipCategoryLabel(partner) {
+    pos_membershipCategoryLabel(partner) {
         return getMembershipCategoryLabel(partner);
     },
 });

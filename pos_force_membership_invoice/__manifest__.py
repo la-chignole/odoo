@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "PoS - Facture obligatoire pour les adhesions",
+    "name": "PoS force membership invoice",
     "version": "19.0.1.0.0",
     "category": "Point of Sale",
-    "summary": "Empeche de valider une vente PoS contenant une adhesion sans facturer",
+    "summary": "Empêche de valider une vente PoS contenant une adhesion sans facturer",
     "description": """
-Empeche la validation du paiement si la commande contient un produit
-d'adhesion et n'est pas marquee "a facturer" : le module "membership"
-ne cree/renouvelle une ligne d'adhesion qu'a la validation d'une
-facture client, jamais sur une simple commande PoS non facturee.
+Empêche la validation du paiement si la commande contient un produit
+d'adhésion et n'est pas marquée "à facturer" : le module "membership"
+ne crée/renouvelle une ligne d'adhésion qu'à la validation d'une
+facture client, jamais sur une simple commande PoS non facturée.
 """,
-    "author": "Materiautheque",
+    "author": "contact@lachignole.org",
     "depends": ["point_of_sale", "membership"],
     "data": [],
     "assets": {

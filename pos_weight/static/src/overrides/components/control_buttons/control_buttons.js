@@ -6,7 +6,7 @@ import { askOrderlineWeight } from "@pos_weight/overrides/utils/weight_popup";
 
 patch(ControlButtons.prototype, {
     // this.dialog et this.currentOrder existent deja sur ControlButtons.
-    async materiautheque_clickWeight() {
+    async pos_weight_clickWeight() {
         const line = this.currentOrder?.getSelectedOrderline();
         if (!line) {
             return;

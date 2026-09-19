@@ -14,9 +14,9 @@ const STATE_LABELS = {
 };
 
 export function getMembershipStateLabel(partner) {
-    // membership_state est `false` (jamais adherent) pour un partenaire qui
-    // n'a jamais eu de ligne d'adhesion : on l'affiche comme "Non adherent",
-    // au meme titre que l'etat explicite "none".
+    // membership_state est `false` (jamais adhérent) pour un partenaire qui
+    // n'a jamais eu de ligne d'adhésion : on l'affiche comme "Non adherent",
+    // au meme titre que l'état explicite "none".
     return STATE_LABELS[partner?.membership_state] || STATE_LABELS.none;
 }
 

@@ -8,11 +8,11 @@ import { askOrderlineWeight } from "@pos_weight/overrides/utils/weight_popup";
 patch(Orderline.prototype, {
     setup() {
         super.setup();
-        this.materiautheque_dialog = useService("dialog");
+        this.pos_weight_dialog = useService("dialog");
     },
 
     /** Ouvre le popup de poids en cliquant directement sur le badge de la ligne. */
-    async materiautheque_openWeightPopup() {
-        await askOrderlineWeight(this.materiautheque_dialog, this.line);
+    async pos_weight_openWeightPopup() {
+        await askOrderlineWeight(this.pos_weight_dialog, this.line);
     },
 });

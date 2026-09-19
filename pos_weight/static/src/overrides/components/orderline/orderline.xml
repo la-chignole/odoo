@@ -12,14 +12,14 @@
     <t t-name="pos_weight.Orderline" t-inherit="point_of_sale.Orderline" t-inherit-mode="extension">
         <xpath expr="//li[hasclass('customer-note')]" position="after">
             <li t-if="vals.isDisplay and line.hasWeight and !line.hideWeight"
-                t-on-click.stop="() => this.materiautheque_openWeightPopup()"
-                class="materiautheque-weight w-100 p-2 my-1 rounded text-break text-bg-success text-success bg-opacity-25 cursor-pointer">
+                t-on-click.stop="() => this.pos_weight_openWeightPopup()"
+                class="pos_weight-weight w-100 p-2 my-1 rounded text-break text-bg-success text-success bg-opacity-25 cursor-pointer">
                 <i class="fa fa-balance-scale me-1" role="img" aria-label="Poids" title="Poids"/>
                 Poids : <t t-esc="line.weightStr"/> kg
             </li>
             <li t-if="vals.isDisplay and !line.hasWeight and !line.hideWeight"
-                t-on-click.stop="() => this.materiautheque_openWeightPopup()"
-                class="materiautheque-weight w-100 p-2 my-1 rounded text-break text-bg-warning text-warning bg-opacity-25 cursor-pointer">
+                t-on-click.stop="() => this.pos_weight_openWeightPopup()"
+                class="pos_weight-weight w-100 p-2 my-1 rounded text-break text-bg-warning text-warning bg-opacity-25 cursor-pointer">
                 <i class="fa fa-balance-scale me-1" role="img" aria-label="Poids manquant" title="Poids manquant"/>
                 Poids non renseigne
             </li>

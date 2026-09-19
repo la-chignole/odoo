@@ -7,7 +7,7 @@ class PosCategory(models.Model):
 
     hide_weight_in_pos = fields.Boolean(
         string="Poids non requis en PoS",
-        help="Si actif, les produits de cette categorie PoS n'affichent pas"
+        help="Si actif, les produits de cette catégorie PoS n'affichent pas"
         " le suivi de poids dans le point de vente (utile pour les"
         " prestations de service, par exemple).",
     )

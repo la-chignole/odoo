@@ -1,24 +1,16 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "Materiautheque - Adhesions en PoS",
+    "name": "PoS membership",
     "version": "19.0.1.0.0",
     "category": "Point of Sale",
-    "summary": "Affiche le statut d'adhesion (membership) des clients dans le PoS, avec code couleur",
+    "summary": "Affiche le statut d'adhésion (membership) des clients dans le PoS, avec code couleur",
     "description": """
-Reimplementation, pour Odoo 19, du pont entre le module "membership" (OCA
-vertical-association) et le Point de Vente. L'ancien module OCA
-pos_membership (16.0) dependait du module core "membership", qui n'existe
-plus a partir d'Odoo 19 (remplace par la version OCA vertical-association).
-
-- Nom du client colore en rouge/vert selon son statut d'adhesion, visible
-  directement dans l'ecran de vente principal (bouton client).
-- Dans la liste des clients : badge colore affichant le statut, la date
-  de fin et la/les categorie(s) d'adhesion en cours ou passee.
-
-Le blocage de la validation du paiement pour les commandes non facturees
-contenant une adhesion est fourni par le module "pos_force_membership_invoice".
+- Nom du client colore en rouge/vert selon son statut d'adhésion, visible
+  directement dans l'écran de vente principal (bouton client).
+- Dans la liste des clients : badge coloré affichant le statut, la date
+  de fin et la/les catégorie(s) d'adhésion en cours ou passee.
 """,
-    "author": "Materiautheque",
+    "author": "contact@lachignole.org",
     "depends": ["point_of_sale", "membership", "pos_force_membership_invoice"],
     "data": [],
     "assets": {

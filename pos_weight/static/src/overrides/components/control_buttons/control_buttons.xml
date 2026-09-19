@@ -11,9 +11,9 @@
     <t t-name="pos_weight.ControlButtons" t-inherit="point_of_sale.ControlButtons" t-inherit-mode="extension">
         <xpath expr="//InternalNoteButton" position="after">
             <button t-if="this.currentOrder?.getSelectedOrderline() and !this.currentOrder.getSelectedOrderline().isKgUnit() and !this.currentOrder.getSelectedOrderline().hideWeight"
-                class="materiautheque-weight-button flex-shrink-0"
+                class="pos_weight-weight-button flex-shrink-0"
                 t-att-class="buttonClass"
-                t-on-click="() => this.materiautheque_clickWeight()">
+                t-on-click="() => this.pos_weight_clickWeight()">
                 <i class="fa fa-balance-scale me-1"/>Poids
             </button>
         </xpath>
