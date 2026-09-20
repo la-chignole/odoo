@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <!--
+        Insere une case "casse-ligne" (pleine largeur dans la grille CSS)
+        juste avant le bouton de categorie, et masque le bouton lui-meme
+        pour cette entree artificielle. Voir category_selector.js : le
+        marqueur { isRowBreak: true } est injecte entre les categories
+        parentes et leurs sous-categories.
+    -->
+    <t t-name="pos_category_rows.CategorySelector" t-inherit="point_of_sale.CategorySelector" t-inherit-mode="extension">
+        <xpath expr="//button[hasclass('category-button')]" position="before">
+            <div t-if="category.isRowBreak" class="pos_category_rows-break"/>
+        </xpath>
+        <xpath expr="//button[hasclass('category-button')]" position="attributes">
+            <attribute name="t-if">!category.isRowBreak</attribute>
+        </xpath>
+    </t>
+
+</templates>

@@ -1,0 +1,13 @@
+.pos_category_rows-break {
+    grid-column: 1 / -1;
+    height: 0;
+}
+
+// The extra row for subcategories makes the category box taller more often.
+// Core caps it with a fixed max-height + internal scrollbar (so the product
+// grid below always keeps its space); we'd rather let it grow and let the
+// product grid (which already scrolls on its own) shrink instead.
+.category-list {
+    max-height: none !important;
+    overflow-y: visible !important;
+}
