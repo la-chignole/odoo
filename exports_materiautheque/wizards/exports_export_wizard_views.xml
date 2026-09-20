@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_exports_export_wizard_form" model="ir.ui.view">
+        <field name="name">exports.export.wizard.form</field>
+        <field name="model">exports.export.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generate export">
+                <group>
+                    <!--
+                        A built-in report's menu entry opens this wizard with
+                        default_template_id + template_locked in its action
+                        context (see views/menu.xml) so this field disappears
+                        and the screen is just "pick a date range": every
+                        other filter (tag, PoS category, etc) is fixed inside
+                        the template itself via a {{key["Name"]}} bracket,
+                        never chosen here.
+                    -->
+                    <field name="template_id"
+                           invisible="context.get('template_locked', False)"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                </group>
+                <footer>
+                    <button string="Generate" type="object"
+                            name="action_generate" class="btn-primary"/>
+                    <button string="Cancel" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_exports_export_wizard" model="ir.actions.act_window">
+        <field name="name">Generate export</field>
+        <field name="res_model">exports.export.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

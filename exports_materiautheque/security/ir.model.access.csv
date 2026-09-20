@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_exports_report_template_user,exports.report.template.user,model_exports_report_template,base.group_user,1,0,0,0
+access_exports_report_template_manager,exports.report.template.manager,model_exports_report_template,group_exports_manager,1,1,1,1
+access_exports_export_wizard_user,exports.export.wizard.user,model_exports_export_wizard,base.group_user,1,1,1,1

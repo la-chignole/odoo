@@ -1,2 +1,5 @@
 .idea
 /odoo
+
+__pycache__
+.env

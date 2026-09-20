@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Spans PoS, stock and accounting data: deliberately not tucked
+        under any single one of those apps' own menus.
+    -->
+    <menuitem id="menu_exports_root" name="Exports" sequence="90"/>
+
+    <menuitem id="menu_exports_generate"
+        name="Generate export"
+        parent="menu_exports_root"
+        action="action_exports_export_wizard"
+        sequence="10"/>
+
+    <menuitem id="menu_exports_templates"
+        name="Templates"
+        parent="menu_exports_root"
+        action="action_exports_report_template"
+        sequence="20"
+        groups="exports_materiautheque.group_exports_manager"/>
+</odoo>

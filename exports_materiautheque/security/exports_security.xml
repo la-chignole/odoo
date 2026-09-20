@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        No category_id here: this Odoo build replaced res.groups.category_id
+        with a res.groups.privilege model, and getting that wiring right
+        isn't worth the risk for a cosmetic grouping in Settings > Users.
+        The group still works fully without it: it just lists under
+        "Extra Rights" there instead of its own named section.
+    -->
+    <record id="group_exports_manager" model="res.groups">
+        <field name="name">Exports Manager</field>
+        <field name="comment">Can upload/edit custom export templates. Anyone can run a report through the "Generate export" wizard.</field>
+    </record>
+
+    <!--
+        Granted automatically to every Odoo Administrator so the Templates
+        menu isn't hidden behind a group nobody remembered to assign:
+        someone already trusted with Settings/Administration is trusted
+        with export templates too. Explicitly add other users from
+        Settings > Users if a non-admin should manage templates.
+    -->
+    <record id="base.group_system" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('group_exports_manager'))]"/>
+    </record>
+</odoo>
