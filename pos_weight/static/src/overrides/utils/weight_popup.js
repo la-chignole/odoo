@@ -20,6 +20,12 @@ export async function askOrderlineWeight(dialogService, line) {
 
     // result est `undefined` si l'utilisateur annule/ferme le popup.
     if (result !== undefined) {
-        line.setWeight(parseFloat(result));
+        const weight = parseFloat(result);
+        line.setWeight(weight);
+        // Produit vendu au kg : la quantite est le poids, on la met a jour
+        // aussi pour ne saisir la valeur qu'une seule fois.
+        if (line.isKgUnit()) {
+            line.setQuantity(weight);
+        }
     }
 }

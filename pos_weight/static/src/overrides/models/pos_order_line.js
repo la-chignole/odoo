@@ -27,9 +27,8 @@ patch(PosOrderline.prototype, {
     get hasWeight() {
         return this.getWeight() !== 0;
     },
+    // hide weight si le produit appartient à au moins une catégorie hide_weight_in_pos coché
     get hideWeight() {
-        // pos_categ_ids est un many2many : le produit peut appartenir a
-        // plusieurs categories PoS, la case cochee sur une seule suffit.
         const categories = this.product_id?.product_tmpl_id?.pos_categ_ids || [];
         return categories.some((category) => category.hide_weight_in_pos);
     },
