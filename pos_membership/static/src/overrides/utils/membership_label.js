@@ -3,6 +3,8 @@
 import { _t } from "@web/core/l10n/translation";
 import { deserializeDate, formatDate } from "@web/core/l10n/dates";
 
+const VALID_MEMBERSHIP_STATES = ["invoiced", "paid", "free"];
+
 const STATE_LABELS = {
     none: _t("Non adhérent"),
     canceled: _t("Adhésion annulée"),
@@ -12,6 +14,10 @@ const STATE_LABELS = {
     free: _t("Membre gratuit"),
     paid: _t("Membre à jour"),
 };
+
+export function isMembershipValid(partner) {
+    return Boolean(VALID_MEMBERSHIP_STATES.includes(partner?.membership_state));
+}
 
 export function getMembershipStateLabel(partner) {
     // membership_state est `false` (jamais adhérent) pour un partenaire qui
@@ -25,12 +31,4 @@ export function getMembershipStopLabel(partner) {
         return "";
     }
     return formatDate(partner.membership_stop);
-}
-
-export function getMembershipCategoryLabel(partner) {
-    const categories = partner?.membership_category_ids || [];
-    if (!categories.length) {
-        return "";
-    }
-    return categories.map((category) => category.name).join(", ");
 }

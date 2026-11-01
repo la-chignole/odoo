@@ -12,24 +12,22 @@
     <t t-name="pos_membership.PartnerLine" t-inherit="point_of_sale.PartnerLine" t-inherit-mode="extension">
         <xpath expr="//div[hasclass('partner-info')]//div[hasclass('company-field')]" position="after">
             <div class="pos-membership small mt-1"
-                 t-attf-class="{{ props.partner.membership_is_valid ? 'text-success' : 'text-danger' }}">
+                 t-attf-class="{{ this.pos_membershipIsValid(props.partner) ? 'text-success' : 'text-danger' }}">
                 <div class="d-flex align-items-center">
                     <i class="fa fa-id-card me-1"/>
                     <p class="m-0" t-esc="this.pos_membershipStateLabel(props.partner)"/>
                 </div>
                 <p class="m-0" t-if="props.partner.membership_stop">Date de fin : <t t-esc="this.pos_membershipStopLabel(props.partner)"/></p>
-                <!--                <t t-if="props.partner.membership_category_ids and props.partner.membership_category_ids.length"> (<t t-esc="this.pos_membershipCategoryLabel(props.partner)"/>)</t>-->
             </div>
         </xpath>
         <xpath expr="//tr[hasclass('partner-info')]//div[hasclass('company-field')]" position="after">
             <div class="pos-membership small mt-1"
-                t-attf-class="{{ props.partner.membership_is_valid ? 'text-success' : 'text-danger' }}">
+                t-attf-class="{{ this.pos_membershipIsValid(props.partner) ? 'text-success' : 'text-danger' }}">
                 <div class="d-flex align-items-center">
                     <i class="fa fa-id-card me-1"/>
                     <p class="m-0" t-esc="this.pos_membershipStateLabel(props.partner)"/>
                 </div>
                 <p class="m-0" t-if="props.partner.membership_stop">Date de fin : <t t-esc="this.pos_membershipStopLabel(props.partner)"/></p>
-<!--                <t t-if="props.partner.membership_category_ids and props.partner.membership_category_ids.length"> (<t t-esc="this.pos_membershipCategoryLabel(props.partner)"/>)</t>-->
             </div>
         </xpath>
     </t>
