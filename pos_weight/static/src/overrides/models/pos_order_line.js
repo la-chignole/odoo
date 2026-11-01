@@ -22,7 +22,8 @@ patch(PosOrderline.prototype, {
         this.weight = weight || 0;
     },
     get weightStr() {
-        return this.getWeight().toFixed(3);
+        // replace '.' by a ',' for french users
+        return this.getWeight().toFixed(2).replace(".", ",");
     },
     get hasWeight() {
         return this.getWeight() !== 0;
